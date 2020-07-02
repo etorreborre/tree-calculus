@@ -1,0 +1,90 @@
+cabal-version:       2.0
+name:                tree-calculus
+version:             0.0.0
+synopsis:            See README for more info
+description:         See README for more info
+homepage:            https://github.com/etorreborre/tree-calculus
+bug-reports:         https://github.com/etorreborre/tree-calculus/issues
+license:             AllRightsReserved
+author:              Eric Torreborre
+maintainer:          etorreborre@yahoo.com
+copyright:           2020 Eric Torreborre
+category:            Data
+build-type:          Simple
+extra-doc-files:     README.md
+                   , CHANGELOG.md
+tested-with:         GHC == 8.6.4
+
+source-repository head
+  type:                git
+  location:            https://github.com/etorreborre/tree-calculus.git
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     TreeCalculus
+                       Prelude
+
+  build-depends:       base-noprelude ^>= 4.12.0.0
+                     , relude
+
+  ghc-options:         -Wall
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wmissing-export-lists
+                       -Wpartial-fields
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
+
+test-suite tree-calculus-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+
+  build-depends:       base-noprelude ^>= 4.12.0.0
+                     , tree-calculus
+                     , relude
+
+  ghc-options:         -Wall
+                       -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wmissing-export-lists
+                       -Wpartial-fields
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
