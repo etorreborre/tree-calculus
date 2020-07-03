@@ -24,7 +24,7 @@ library
   exposed-modules:     TreeCalculus
                        Prelude
 
-  build-depends:       base-noprelude ^>= 4.12.0.0
+  build-depends:       base ^>= 4.12.0.0
                      , relude
 
   ghc-options:         -Wall
@@ -34,7 +34,6 @@ library
                        -Widentities
                        -Wredundant-constraints
                        -fhide-source-paths
-                       -Wmissing-export-lists
                        -Wpartial-fields
 
   default-language:    Haskell2010
@@ -55,11 +54,19 @@ library
 test-suite tree-calculus-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
-  main-is:             Spec.hs
+  main-is:             test.hs
 
-  build-depends:       base-noprelude ^>= 4.12.0.0
+  build-depends:       base ^>= 4.12.0.0
                      , tree-calculus
                      , relude
+                     , hedgehog
+                     , multimap
+                     , protolude
+                     , registry-hedgehog
+                     , tasty
+                     , tasty-discover
+                     , tasty-hedgehog
+                     , tasty-th
 
   ghc-options:         -Wall
                        -threaded
@@ -71,8 +78,7 @@ test-suite tree-calculus-test
                        -Widentities
                        -Wredundant-constraints
                        -fhide-source-paths
-                       -Wmissing-export-lists
-                       -Wpartial-fields
+                       -fno-warn-missing-signatures
 
   default-language:    Haskell2010
   default-extensions:  ConstraintKinds

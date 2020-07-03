@@ -1,6 +1,13 @@
-resolver: lts-13.16
+resolver: lts-16.2
 
-extra-deps: [base-noprelude-4.12.0.0]
+extra-deps:
+  - base-noprelude-4.12.0.0
+  - hedgehog-1.0.3
+  - registry-0.1.9.1
+  - registry-hedgehog-0.2.1.1
+  - tasty-hedgehog-1.0.0.2
 
 ghc-options:
   "$locals": -fhide-source-paths
+
+allow-newer: true
