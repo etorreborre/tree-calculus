@@ -53,7 +53,7 @@ prop name p =
 test :: HasCallStack => TestName -> PropertyT IO () -> TestTree
 test name p = withFrozenCallStack (minTestsOk 1 . noShrink $ prop name p)
 
-gotException :: forall a . (HasCallStack) => a -> PropertyT IO ()
+gotException :: forall a . HasCallStack => a -> PropertyT IO ()
 gotException a = withFrozenCallStack $ do
   res <- liftIO (try (evaluate a) :: IO (Either SomeException a))
   case res of

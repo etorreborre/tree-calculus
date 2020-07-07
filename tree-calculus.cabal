@@ -22,10 +22,9 @@ source-repository head
 library
   hs-source-dirs:      src
   exposed-modules:     TreeCalculus
-                       Prelude
 
   build-depends:       base ^>= 4.12.0.0
-                     , relude
+                     , protolude
 
   ghc-options:         -Wall
                        -Wincomplete-uni-patterns
@@ -58,7 +57,6 @@ test-suite tree-calculus-test
 
   build-depends:       base ^>= 4.12.0.0
                      , tree-calculus
-                     , relude
                      , hedgehog
                      , multimap
                      , protolude
@@ -67,6 +65,7 @@ test-suite tree-calculus-test
                      , tasty-discover
                      , tasty-hedgehog
                      , tasty-th
+                     , text 
 
   ghc-options:         -Wall
                        -threaded
