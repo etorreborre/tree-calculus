@@ -2,7 +2,7 @@
 
 module Test.TreeSpec where
 
-import TreeCalculus
+import Tree
 import Data.Text as T
 import Protolude hiding ((*))
 import Test.Tasty.Extensions hiding (eval)

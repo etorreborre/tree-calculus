@@ -1,6 +1,6 @@
 {-# LANGUAGE PatternSynonyms #-}
 
-module TreeCalculus where
+module Tree where
 
 import Protolude as P hiding ((*), (:*:))
 import Prelude hiding ((*))
