@@ -7,6 +7,7 @@ import Data.Text as T
 import Protolude hiding ((*))
 import Test.Tasty.Extensions hiding (eval)
 import Prelude hiding ((*), putStrLn, print)
+import Test.Generators
 
 test_display = test "display" do
   checkDisplay k "∆∆"
@@ -32,6 +33,7 @@ test_s = minTestsOk 20 $ prop "S = ∆(∆(KD))(∆(∆K)(KD))" do
   checkEvaluation (s * x * y * z) ((x * z) * (y * z))
 
 -- * HELPERS
+
 checkEvaluation :: Tree -> Tree -> PropertyT IO ()
 checkEvaluation actualTree expectedTree = do
   let actual = eval actualTree
@@ -39,12 +41,6 @@ checkEvaluation actualTree expectedTree = do
   annotate ("expected " <> showTree expected)
   annotate ("got " <> showTree actual)
   actual === expected
-
-genPair :: Gen (Tree, Tree)
-genPair = (,) <$> genTree <*> genTree
-
-genTriple :: Gen (Tree, Tree, Tree)
-genTriple = (,,) <$> genTree <*> genTree <*> genTree
 
 checkDisplay :: Tree -> Text -> PropertyT IO ()
 checkDisplay tree expected = do
@@ -55,12 +51,3 @@ checkDisplay tree expected = do
 showDeltas = T.replace "∆" "^"
 
 showTree = toS . showDeltas . display @Tree
-
-genTree :: Gen Tree
-genTree = sized genSizedTree
-
-genSizedTree :: Size -> Gen Tree
-genSizedTree size =
-  choice [
-    pure Node,
-    App <$> genSizedTree (size `div` 2) <*> genSizedTree (size `div` 2)]

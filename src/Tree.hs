@@ -79,12 +79,18 @@ infixl 3 *
 (*) :: Tree -> Tree -> Tree
 (*) = App
 
+-- Common combinations
+
 l :: Tree
 l = Node
 
 -- ∆∆
 k :: Tree
 k = Node * Node
+
+-- ∆∆(∆(∆∆)(∆∆))
+ki :: Tree
+ki = k * i
 
 -- ∆(∆∆)(∆∆)
 i :: Tree
