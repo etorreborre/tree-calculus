@@ -23,9 +23,9 @@ test_find_pair_combination = prop "find pair combination" do
   trySecond <- forAll genTree
   tuples <- forAll genPairs
   --let pairs = (\(x, y) -> c1 * x * c2 * y) <$> tuples
+  --let pairs = (\(x, y) -> x * y * c1) <$> tuples
   --let pairs = (\(x, y) -> x * c1 * y * c2) <$> tuples
-  --let pairs = (\(x, y) -> c1 * x * y * c2) <$> tuples
-  let pairs = (\(x, y) -> x * y * c1) <$> tuples
+  let pairs = (\(x, y) -> c1 * x * y * c2) <$> tuples
 
   let actual = (\p -> (eval (tryFirst * p), eval (trySecond * p))) <$> pairs
   let expected = (\(x, y) -> (eval x, eval y)) <$> tuples

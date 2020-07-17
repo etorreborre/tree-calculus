@@ -88,6 +88,11 @@ l = Node
 k :: Tree
 k = Node * Node
 
+kn :: Int -> Tree
+kn 0 = Node
+kn 1 = Node * Node
+kn n = k * kn (n - 1)
+
 -- ∆∆(∆(∆∆)(∆∆))
 ki :: Tree
 ki = k * i
